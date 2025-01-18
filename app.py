@@ -6,8 +6,6 @@ st.set_page_config(page_title="AI AgentChat", layout="wide")
 
 # Function to add chat pages dynamically with a custom theme
 def add_chat_page(webhook_url, page_name, theme_color):
-    st.subheader(f"Chat with {page_name} 👋")
-    
     # Custom CSS for chat theme
     custom_css = f"""
     <style>
@@ -50,11 +48,11 @@ def add_chat_page(webhook_url, page_name, theme_color):
 
 # Sidebar for adding multiple webhook URLs and theme customization
 st.sidebar.header("AI AgentChat Configuration")
-webhook_urls = st.sidebar.text_area("Enter n8n Webhook URLs (comma-separated):", "YOUR_PRODUCTION_WEBHOOK_URL").split(',')
+webhook_urls = st.sidebar.text_area("Enter Webhook URLs (comma-separated):", "").split(',')
 theme_color = st.sidebar.color_picker("Select Chat Theme Color:", "#ffffff")
 
 # Validate webhook URLs and display chat pages
-if webhook_urls and webhook_urls[0].strip() != "YOUR_PRODUCTION_WEBHOOK_URL":
+if webhook_urls and webhook_urls[0].strip():
     for url in webhook_urls:
         cleaned_url = url.strip()
         if cleaned_url:
